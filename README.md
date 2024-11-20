@@ -6,14 +6,18 @@ Technologies: Spring Data JPA, Spring Web, Spring Boot Devtools, Spring MySQL Dr
 API Gateway (Entery Point to access RESTful API endpoints of micro-services), Eureka Server(Naming Server), FeignClient(For inter-service communication)
 
 
-#### Product Service
+#### 1. Product Service
 It is a micro-service based on Spring Cloud framework <br>
---- create product, save product to datatbase, delete and update product
+--- create product, save product to datatbase, delete and update product <br>
 
+#### 2. Inventory Service
+It is a micro-service based on Spring Cloud framework <br>
+-- Checks product inventory <br>
 
-#### Order Service
-It is a micro-service based on Spring Cloud framework
+#### 3. Order Service
+It is a micro-service based on Spring Cloud framework <br>
+-- Places an order if an inventory is available for a particular product. <br>
 
 #### React-UI
-This provides front-end user interface
--- built using create-react-app
+This provides front-end user interface <br>
+-- built using create-react-app <br>
