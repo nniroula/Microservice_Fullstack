@@ -1,4 +1,4 @@
-### ePurchase Service
+### eOrderSys
 
 #### Description
 It's a fullstack online product ordering service that is built leveraging micro-service with Spring Cloud. <br>
