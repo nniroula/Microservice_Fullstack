@@ -1,4 +1,4 @@
--- db tables will be created using spring boot project itself, just create database via this file
+-- db table(s) will be updated using spring boot project
 DROP DATABASE IF EXISTS product_service_db;
 create database product_service_db;
 use product_service_db;
