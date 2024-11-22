@@ -63,5 +63,41 @@ Open up terminal in your device and cd into the folder locaiton of your seed.sql
 -- Use command ```show databases;``` to check your available databases. <br> 
 -- Run the command ```use your_db```(your database name, in this case product_service_db) to connect to your database <br>
 -- Run the command ```show tables;``` to show available database tables <br>
+-- ```show columns from your_table``` to display column names <br>
 -- ```SELECT * FROM table_name;```(in this case product_table) - to display the list of items from the database table <br>
 -- Then run the project in Eclipse and provide input in the browser. Check the table as above for the update. <br>
+
+
+#### ```I) How to run this project in your local device```
+1. Run the seed file and make sure that a database is created
+2. Run the project in IDE(such as Eclipse or IntelliJ)le
+
+
+#### ```J) Postman Client for testing API endpoints ```
+1. Proudct service endpoints: <br>
+--  POST: -> localhost:8081/api/products <br>
+JSON input in Postman is <br>
+    {<br>
+        "name": "iphone",<br>
+        "description": "7 plus",<br>
+        "price": 750.00<br>
+    }<br>
+
+-- GET product by id -> localhost:8081/api/products/1<br>
+-- DELETE product by id -> localhost:8081/api/products/product/1
+
+2. Oder service endpoints
+-- POST -> <br> localhost:8082/api/orders <br>
+JSON formatted input is: <br>
+        {<br>
+            "skuCode": "SKU CODE HERE", <br>
+            "quantity": 10 <br>
+        } <br>
+
+-- GET --> <br>
+-- DELETE --> <br>
+
+3. Inventory service endpoints
+-- POST -> localhost:8082/api/orders<br>
+-- GET -> <br>
+-- DELETE -> <br>
