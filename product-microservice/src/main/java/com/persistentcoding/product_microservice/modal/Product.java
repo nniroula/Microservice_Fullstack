@@ -26,16 +26,20 @@ public class Product {
 	@Column(name="product_price")
 	private BigDecimal price;
 	
+	@Column(name="product_sku_code")
+	private String skuCode;
+	
 	/* constructors */
 	
 	public Product() {
 	}
 	
-	public Product(String name, String description, BigDecimal price) {
+	public Product(long id, String name, String description, BigDecimal price, String skuCode) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.skuCode = skuCode;
 	}
 	
 					/* getters and setters */
@@ -67,6 +71,11 @@ public class Product {
 		this.price = price;
 	}
 	
-	
+	public String getSkuCode() {
+		return skuCode;
+	}
+	public void setSkuCode(String skuCode) {
+		this.skuCode = skuCode;
+	}
 	
 }
