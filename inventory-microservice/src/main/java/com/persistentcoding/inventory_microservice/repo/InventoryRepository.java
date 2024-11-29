@@ -3,6 +3,7 @@ package com.persistentcoding.inventory_microservice.repo;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import com.persistentcoding.inventory_microservice.modal.Inventory;
