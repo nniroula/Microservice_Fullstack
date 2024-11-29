@@ -12,6 +12,7 @@ API Gateway (Entery Point to access RESTful API endpoints of micro-services), Eu
 2. inventory-service = 8082 <br>
 3. order-service = 8083 <br>
 4. Eureka-Server = localhost:8761 <br>
+5. api-gateway = localhost:8765 <br>
 
 
 #### ```B) Different Micro-services```
