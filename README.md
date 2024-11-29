@@ -11,6 +11,7 @@ API Gateway (Entery Point to access RESTful API endpoints of micro-services), Eu
 1. product-service = 8081 <br>
 2. inventory-service = 8082 <br>
 3. order-service = 8083 <br>
+4. Eureka-Server = localhost:8761 <br>
 
 
 #### ```B) Different Micro-services```
@@ -74,7 +75,7 @@ Open up terminal in your device and cd into the folder locaiton of your seed.sql
 
 
 #### ```J) Postman Client for testing API endpoints ```
-1. Proudct service endpoints: <br>
+1. ```Proudct service endpoints:``` <br>
 --  POST: -> localhost:8081/api/products <br>
 JSON input in Postman is <br>
     {<br>
@@ -82,11 +83,12 @@ JSON input in Postman is <br>
         "description": "7 plus",<br>
         "price": 750.00<br>
     }<br>
-
+>blockquote
 -- GET product by id -> localhost:8081/api/products/1<br>
+-- GET all products -> localhost:8081/api/products<br>
 -- DELETE product by id -> localhost:8081/api/products/product/1
 
-2. Oder service endpoints
+2. ```Oder service endpoints``` <br>
 -- POST -> <br> localhost:8082/api/orders <br>
 JSON formatted input is: <br>
         {<br>
@@ -94,10 +96,74 @@ JSON formatted input is: <br>
             "quantity": 10 <br>
         } <br>
 
--- GET --> <br>
--- DELETE --> <br>
+-- GET all orders --> localhost:8082/api/orders<br>
+-- GET an order by ID --> localhost:8082/api/orders/1<br>
+-- DELETE by id --> localhost:8082/api/orders/1<br>
 
-3. Inventory service endpoints
--- POST -> localhost:8082/api/orders<br>
--- GET -> <br>
--- DELETE -> <br>
+-- response from inventory service
+ &emsp; &emsp; &emsp; 
+    localhost:8082/api/orders/api/inventory/response/from/inventoryService<br>
+
+    localhost:8082/api/orders/api/inventory/{sku}/quantity
+
+    -- To update inventory from order service
+    // update url is localhost:8082/api/orders/api/inventory/{sku}/update
+
+
+
+3. ```Inventory service endpoints```
+-- POST create an inventory item -> localhost:8083/api/inventory<br>
+JSON format is <br>
+{ <br>
+    "skuCode": "MackBook", <br>
+    "quantity": 10 <br>
+} <br>
+-- GET all inventories -> localhost:8083/api/inventory <br>
+-- GET an item by SKU code -> localhost:8083/api/inventory/SkuCodeHere
+-- DELETE inventory by sku code -> localhost:8083/api/inventory/SkuCodeHere <br>
+
+<pre>
+>blockquote
+-- get resposne from inventory micro-service <br>
+    &emsp; &emsp; &emsp; 
+    localhost:8082/api/orders/api/inventory/response/from/inventoryService<br>
+
+    localhost:8083/api/inventory/response/from/inventoryService
+>blockquote
+</pre>
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
+	// create a product using product Request DTO class
+	@PostMapping("/product")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void createProductUsingProductDTO(@RequestBody ProductRequestDTO newProductRequestDTO){
+		productService.createProductUsingProductRequestDto(newProductRequestDTO);
+	}
+	
+	/* a. create a product using Product modal directly */
+	public Product createProduct(Product product) {
+		Product productCreataed = productRepo.save(product);
+		return productCreataed;
+	}
+	
+	
+	//b. create a product using Product DTO class
+	public ProductRequestDTO createProductUsingProductRequestDto(ProductRequestDTO productRequestDto) {
+		
+		// convert ProductRequestDTO into Product JPA Entity and save it to database
+		Product requestDtoMappedProduct = modelMapper.map(productRequestDto, Product.class);
+		 Product createdProduct = productRepo.save(requestDtoMappedProduct);
+		 
+		 //Convert Product JPA Entity into ProductRequestDTO type and return it
+		 ProductRequestDTO createdProductRequestDTO = modelMapper.map(createdProduct, ProductRequestDTO.class);
+		return createdProductRequestDTO;
+	}
+
+
+    ////////////////// endpoints //////////////////////
+    /api/inventory/item/{sku} -> to access inventory service from order service

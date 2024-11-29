@@ -1,5 +1,7 @@
 package com.persistentcoding.order_microservice.modal;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +21,36 @@ public class Order {
 	@Column(name="quantity")
 	private int quantity;
 	
+	@Column(name = "unit_price")
+	private BigDecimal unitPrice;
+	
+	@Column(name = "total_price")
+	private BigDecimal totalPrice;
+	
+	@Column(name = "product_name")
+	private String productName;
+	
+	@Column(name = "product_description")
+	private String productDescription;
+	
+	
+	/* constructors */
+	public Order() {
+		
+	}
+	
+	public Order(String skuCode, Integer quantity) {
+		super();
+		this.skuCode = skuCode;
+		this.quantity = quantity;
+	}
+
+	public Order(String skuCode, Integer quantity, BigDecimal price) {
+		super();
+		this.skuCode = skuCode;
+		this.quantity = quantity;
+		this.unitPrice = price;
+	}
 	
 	/* getters and setters */
 	public long getId() {
@@ -42,5 +74,32 @@ public class Order {
 		this.quantity = quantity;
 	}
 	
+	public BigDecimal getUnitPrice() {
+		return unitPrice;
+	}
+	public void setUnitPrice(BigDecimal unitPrice) {
+		this.unitPrice = unitPrice;
+	}
 	
+	public BigDecimal getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(BigDecimal totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	
+	public String getProductDescription() {
+		return productDescription;
+	}
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}	
 }
+

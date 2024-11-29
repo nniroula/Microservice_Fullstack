@@ -6,7 +6,8 @@ use product_service_db;
 DROP table IF EXISTS product_service_table;
 CREATE table product_service_table(
 								id int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-								product_name VARCHAR(255), 
+								product_name VARCHAR(255),
+								product_sku_code VARCHAR(255),
 								product_description VARCHAR(255),
 								product_price decimal
 							);
