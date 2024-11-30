@@ -49,17 +49,13 @@ public class ApiGatewayConfiguration {
 		// in browser localhost:8765/PRODUCT-MICROSERVICE/api/products
 		return routeLocatorBuilder.routes()
 						.route(predicate -> predicate.path("/api/products/**") // if request starts with /api/products
-								//.filters(f -> f.stripPrefix(1))
-								//.filters(f -> f.rewritePath("/PRODUCT-MICROSERVICE/(?<segment>.*)", "/${segment}"))
-//								.uri("lb://PRODUCT-MICROSERVICE")) // name in Eureka server
 								.uri("lb://PRODUCT-MICROSERVICE")) // name in Eureka server
-								//.uri("lb://product-microservice/"))
-//									
-//						.route("ORDER-MICROSERVICE", predicate -> predicate.path("/api/orders/**") // if request starts with /api/products
-//								.uri("lb://ORDER-MICROSERVICE/"))
-//						
-//						.route("INVENTORY-MICROSERVICE", predicate -> predicate.path("/api/inventory/**") // if request starts with /api/products
-//								.uri("lb://INVENTORY-MICROSERVICE/"))
+									
+						.route("ORDER-MICROSERVICE", predicate -> predicate.path("/api/orders/**") // if request starts with /api/products
+								.uri("lb://ORDER-MICROSERVICE/"))
+						
+						.route("INVENTORY-MICROSERVICE", predicate -> predicate.path("/api/inventory/**") // if request starts with /api/products
+								.uri("lb://INVENTORY-MICROSERVICE/"))
 				
 						.build();
 	}

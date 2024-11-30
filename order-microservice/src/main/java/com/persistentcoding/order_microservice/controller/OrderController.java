@@ -37,8 +37,7 @@ public class OrderController {
 	public OrderController(OrderService orderService) {
 		this.orderService = orderService;
 	}
-	
-	
+
 	/* retrieve an order by its id */
 	@GetMapping("/{id}")
 	public Optional<Order> getOrderById(@PathVariable Long id) {
