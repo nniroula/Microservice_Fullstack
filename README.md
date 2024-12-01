@@ -238,8 +238,19 @@ http://localhost:8765/PRODUCT-MICROSERVICE/api/products/c/name works when in app
 
 
 #### ```F) React-UI```
-This provides front-end user interface <br>
--- built using create-react-app <br>
+1. Open a terminal and navigate to your workspace directory. <br>
+Create a new React project using Create React App: ```npx create-react-app react-ui``` <br>
+Navigate/cd to the project directory, which is react-ui <br>
+
+2. Install Axios for making HTTP request to API-Gateway <br>
+&emsp; &emsp; &emsp;  ```npm install axios``` <br>
+
+3. Install React Router DOM for routing the API endpoints
+```npm install react-router-dom```. If this does not work, then include the dom version such as dom@6 instead of dom. <br>
+
+4. Install Bootstrap for CSS styling ```npm install bootstrap```.
+
+5. Now, create components(such as ProductService.js) for displaying products and orders.
 
 <hr>
 <hr>
