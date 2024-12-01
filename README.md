@@ -217,6 +217,23 @@ http://localhost:8765/PRODUCT-MICROSERVICE/api/products/c/name works when in app
 - DELETE an order by id --> localhost:8082/api/orders/1<br>
 
 <hr>
+
+&emsp; E4. ```Inter-service communication API Endpoints```: <br>
+
+- get resposne from inventory micro-service <br>
+&emsp; &emsp; &emsp; 
+    localhost:8082/api/orders/api/inventory/response/from/inventoryService<br>
+
+- To update inventory quantity from order service <br>
+&emsp; &emsp; &emsp;
+    localhost:8082/api/orders/api/inventory/{sku}/update <br>
+
+-  Retrieve quantity of a product in inventory service from order microserive
+&emsp; &emsp; &emsp;
+    localhost:8082/api/orders/api/inventory/{sku}/quantity
+
+
+<hr>
 <hr>
 
 
@@ -235,18 +252,14 @@ This provides front-end user interface <br>
 <hr>
 <hr>
 
-#### ```H) How to create MYSQL database```
-1. bluh bluh bluh <br>
-2. bluh bluh bluh <br>
-3. bluh bluh bluh <br>
-4. bluh bluh bluh <br>
-5. bluh bluh bluh <br>
-6. bluh bluh bluh <br>
+#### ```H) How to create Spring Boot project?```
+1. Go to the site start.spring.io and add dependencies. Then generate the project to your desired directory in your device and import it in IDE like Eclipse. <br>
 
 <hr>
 <hr>
 
 #### ```I) How to run seed.sql file```
+Write all SQL code to crate a database and table(s) in seed.sql file and run it as below. ```application.properties``` file contains set up to update the database table. <br> <br>
 Start your MySQL RDBMS in your device (Click on Apple icon on top left corner of your Mac laptop > System Preferences > MySQL) <br>
 Open this project in Eclipse IDE <br>
 Open up terminal in your device and cd into the folder locaiton of your seed.sql file. Then type ```mysql``` and hit enter. If this does not work, then run the command ```mysql -u root -p```. Provide password for your MySQL RDBMS. <br>
@@ -262,72 +275,10 @@ Open up terminal in your device and cd into the folder locaiton of your seed.sql
 <hr>
 
 #### ```J) How to run this project in your local device```
-1. Run the seed file and make sure that a database is created
-2. Run the project in IDE(such as Eclipse or IntelliJ)le
+1. Run the seed file and make sure that a database is created <br>
+2. Run the project in IDE(such as Eclipse or IntelliJ). <br>
+3. You must run all projects separately -  Product Service, Order Service, Invnetory Service, Eureka Service Registry Server and Spring Cloud API gateway projects. For all of these proejcts - you can do Run -> Run As -> Java projects on your Main Spring Boot files. <br>
+4. Run the UI -> npm start 
 
 <hr>
 <hr>
-
-#### ```K) Postman Client for testing API endpoints ```
-
--- response from inventory service
- &emsp; &emsp; &emsp; 
-    localhost:8082/api/orders/api/inventory/response/from/inventoryService<br>
-
-    localhost:8082/api/orders/api/inventory/{sku}/quantity
-
-    -- To update inventory from order service
-    // update url is localhost:8082/api/orders/api/inventory/{sku}/update
-
-
-3. ```Inventory service endpoints```
-
-
-<pre>
->blockquote
--- get resposne from inventory micro-service <br>
-    &emsp; &emsp; &emsp; 
-    localhost:8082/api/orders/api/inventory/response/from/inventoryService<br>
-
-    localhost:8083/api/inventory/response/from/inventoryService
->blockquote
-</pre>
-
-<hr>
-<hr>
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////
-	// create a product using product Request DTO class
-	@PostMapping("/product")
-	@ResponseStatus(HttpStatus.CREATED)
-	public void createProductUsingProductDTO(@RequestBody ProductRequestDTO newProductRequestDTO){
-		productService.createProductUsingProductRequestDto(newProductRequestDTO);
-	}
-	
-	/* a. create a product using Product modal directly */
-	public Product createProduct(Product product) {
-		Product productCreataed = productRepo.save(product);
-		return productCreataed;
-	}
-	
-	
-	//b. create a product using Product DTO class
-	public ProductRequestDTO createProductUsingProductRequestDto(ProductRequestDTO productRequestDto) {
-		
-		// convert ProductRequestDTO into Product JPA Entity and save it to database
-		Product requestDtoMappedProduct = modelMapper.map(productRequestDto, Product.class);
-		 Product createdProduct = productRepo.save(requestDtoMappedProduct);
-		 
-		 //Convert Product JPA Entity into ProductRequestDTO type and return it
-		 ProductRequestDTO createdProductRequestDTO = modelMapper.map(createdProduct, ProductRequestDTO.class);
-		return createdProductRequestDTO;
-	}
-
-
-    ////////////////// endpoints //////////////////////
-    /api/inventory/item/{sku} -> to access inventory service from order service
