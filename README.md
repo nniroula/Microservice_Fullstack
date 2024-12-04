@@ -258,10 +258,10 @@ Navigate/cd to the project directory, which is react-ui <br>
 
 #### ```G) React-UI API Endpoints```
 1.  http://localhost:3000/ for home page
-2. http://localhost:3000/getProducts <br>
+2. http://localhost:3000/fetchProducts <br>
 
-3. http://localhost:3000/getInventories <br>
-4. http://localhost:3000/getOrders
+3. http://localhost:3000/fetchInventories <br>
+4. http://localhost:3000/fetchOrders
 
 <hr>
 <hr>
