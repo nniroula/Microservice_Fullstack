@@ -292,7 +292,8 @@ Open up terminal in your device and cd into the folder locaiton of your seed.sql
 1. Run the seed file and make sure that a database is created <br>
 2. Run the project in IDE(such as Eclipse or IntelliJ). <br>
 3. You must run all projects separately -  Product Service, Order Service, Invnetory Service, Eureka Service Registry Server and Spring Cloud API gateway projects. For all of these proejcts - you can do Run -> Run As -> Java projects on your Main Spring Boot files. <br>
-4. Run the UI -> npm start and then go to http://localhost:3000 in the browser <br>
+4. You can use Postman Client to test back-end functionalities
+5. Run the UI -> npm start and then go to http://localhost:3000 in the browser <br>
 
 <hr>
 <hr>
