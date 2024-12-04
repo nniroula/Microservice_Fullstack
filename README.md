@@ -250,15 +250,18 @@ Navigate/cd to the project directory, which is react-ui <br>
 
 4. Install Bootstrap for CSS styling ```npm install bootstrap```.
 
-5. Now, create components(such as ProductService.js) for displaying products and orders.
+5. Now, create components(such as ProductService.js) for displaying products, inventories and orders.
 
 <hr>
 <hr>
 
 
 #### ```G) React-UI API Endpoints```
-1. bluh bluh bluh <br>
-2. bluh bluh bluh <br>
+1.  http://localhost:3000/ for home page
+2. http://localhost:3000/getProducts <br>
+
+3. http://localhost:3000/getInventories <br>
+4. http://localhost:3000/getOrders
 
 <hr>
 <hr>
@@ -289,7 +292,7 @@ Open up terminal in your device and cd into the folder locaiton of your seed.sql
 1. Run the seed file and make sure that a database is created <br>
 2. Run the project in IDE(such as Eclipse or IntelliJ). <br>
 3. You must run all projects separately -  Product Service, Order Service, Invnetory Service, Eureka Service Registry Server and Spring Cloud API gateway projects. For all of these proejcts - you can do Run -> Run As -> Java projects on your Main Spring Boot files. <br>
-4. Run the UI -> npm start 
+4. Run the UI -> npm start and then go to http://localhost:3000 in the browser <br>
 
 <hr>
 <hr>
